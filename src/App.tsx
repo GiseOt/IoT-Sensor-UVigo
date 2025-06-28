@@ -1,17 +1,17 @@
-import React from 'react';
-import { SensorProvider } from './contexts/SensorContext';
-import { SensorTable } from './components/SensorTable';
-import './App.css'
+import React from "react";
+import { SensorProvider } from "./contexts/SensorContext";
+import { Dashboard } from "./components/Dashboard";
+
+import "./App.css";
 
 function App() {
- 
-  return (
-    <>
-    <SensorProvider>
-      <SensorTable />
-      </SensorProvider>
-    </>
-  )
+	return (
+		<>
+			<SensorProvider>
+				<Dashboard />
+			</SensorProvider>
+		</>
+	);
 }
 
-export default App
+export default App;
