@@ -32,7 +32,7 @@ function initSensors() {
 				id: "sensor_3",
 				name: "Sensor de Presión Tanque",
 				type: "Presión",
-				value: 980.1,
+				value: 98.1,
 				status: false,
 				updatedAt: new Date().toISOString(),
 			},
@@ -40,7 +40,7 @@ function initSensors() {
 				id: "sensor_4",
 				name: "Sensor de Luz Bodega",
 				type: "Luz",
-				value: 300,
+				value: 2.01,
 				status: true,
 				updatedAt: new Date().toISOString(),
 			},
@@ -58,7 +58,7 @@ export const sensorService = {
 		return [...mockSensors];
 	},
 
-	//Agregar un sensor
+	//*Agregar un sensor
 	create: async (sensor: Omit<Sensor, "id" | "updatedAt">): Promise<void> => {
 		const newSensor: Sensor = {
 			...sensor,
@@ -69,7 +69,7 @@ export const sensorService = {
 		setLocalStorage(STORAGE_KEY, mockSensors);
 	},
 
-	// Editar un sensor 
+	// *Editar un sensor 
 	update: async (sensor: Sensor): Promise<void> => {
 		const index = mockSensors.findIndex((s) => s.id === sensor.id);
 		if (index !== -1) {
@@ -78,7 +78,7 @@ export const sensorService = {
 		}
 	},
 
-	// Borrar un sensor
+	// *Borrar un sensor
 	delete: async (id: string): Promise<void> => {
 		const index = mockSensors.findIndex((s) => s.id === id);
 		if (index !== -1) {
