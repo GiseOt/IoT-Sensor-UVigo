@@ -20,8 +20,12 @@ import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { statusColors, getSensorValueColor } from "../theme/colors";
 
-export const SensorTable = () => {
-	const { sensors, deleteSensor } = useSensors();
+
+type SensorTableProps = {
+	sensors: Sensor[];
+};
+export const SensorTable: React.FC<SensorTableProps> = ({ sensors }) => {
+	const { deleteSensor } = useSensors();
 	const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
 	const [isFormOpen, setIsFormOpen] = useState(false);
 	const [selectedSensor, setSelectedSensor] = useState<Sensor | null>(null);
@@ -45,7 +49,7 @@ export const SensorTable = () => {
 		const sensorToEdit = sensors.find((s) => s.id === sensorId);
 		if (sensorToEdit) {
 			if (typeof sensorToEdit.value !== "number") {
-				sensorToEdit.value = 0; 
+				sensorToEdit.value = 0;
 			}
 			openEditSensorForm(sensorToEdit);
 		}
@@ -62,8 +66,7 @@ export const SensorTable = () => {
 		return sorted;
 	}, [sensors, sortOrder]);
 
-	
-//*Unidad de Medida Sensores
+	//*Unidad de Medida Sensores
 	const getValueUnit = (tipo: string) => {
 		switch (tipo.toLowerCase()) {
 			case "temperatura":
