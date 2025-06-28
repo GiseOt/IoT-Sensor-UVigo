@@ -1,4 +1,4 @@
-import { Sensor } from "../types/Sensor";
+import type { Sensor } from "../types/Sensor";
 
 
 export let mockSensors: Sensor[] = [
@@ -22,7 +22,7 @@ export let mockSensors: Sensor[] = [
 		id: "sensor_3",
 		name: "Sensor de Presión Tanque",
 		type: "Presión",
-		value: 980.1,
+		value: 98.1,
 		status: false,
 		updatedAt: new Date().toISOString(),
 	},
@@ -30,7 +30,7 @@ export let mockSensors: Sensor[] = [
 		id: "sensor_4",
 		name: "Sensor de Luz Bodega",
 		type: "Luz",
-		value: 300,
+		value: 2.01,
 		status: true,
 		updatedAt: new Date().toISOString(),
 	},
