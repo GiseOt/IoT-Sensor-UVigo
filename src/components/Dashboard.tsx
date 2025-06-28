@@ -2,6 +2,7 @@ import React, { useState, useMemo } from "react";
 import { SensorFilter } from "./SensorFilters";
 import { SensorTable } from "./SensorTable";
 import { useSensors } from "../hook/useSensor";
+import { Typography } from "@mui/material";
 
 export const Dashboard = () => {
 	const { sensors } = useSensors();
@@ -22,7 +23,16 @@ export const Dashboard = () => {
 	}, [sensors, searchText, typeFilter, statusFilter]);
 
 	return (
-		<>
+		<main
+			style={{
+				maxWidth: 1280,
+				margin: "0 auto",
+				padding: 4,
+			}}
+		>
+			<Typography variant="h6" gutterBottom>
+				Gestión de Sensores ({sensors.length})
+			</Typography>
 			<SensorFilter
 				searchText={searchText}
 				onSearchTextChange={setSearchText}
@@ -32,6 +42,6 @@ export const Dashboard = () => {
 				onStatusFilterChange={setStatusFilter}
 			/>
 			<SensorTable sensors={filteredSensors} />
-		</>
+		</main>
 	);
 };
