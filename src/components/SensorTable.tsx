@@ -12,14 +12,13 @@ import {
 	Paper,
 	Typography,
 	Box,
-    Button
+	Button,
 } from "@mui/material";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { statusColors, getSensorValueColor } from "../theme/colors";
-
 
 type SensorTableProps = {
 	sensors: Sensor[];
@@ -87,17 +86,20 @@ export const SensorTable: React.FC<SensorTableProps> = ({ sensors }) => {
 
 	return (
 		<Paper sx={{ padding: 2, mt: 3 }}>
-			<Typography variant="h6" gutterBottom>
-				Sensores en Tiempo Real ({sensors.length})
-			</Typography>
-			<Button
-				variant="contained"
-				color="primary"
-				onClick={openNewSensorForm}
-				sx={{ mb: 2 }}
+			<Box
+				display="flex"
+				justifyContent="space-between"
+				alignItems="center"
+				mb={2}
 			>
-				+ Nuevo Sensor
-			</Button>
+				<Typography variant="h6" gutterBottom>
+					Sensores en Tiempo Real ({sensors.length} sensor
+					{sensors.length !== 1 ? "es" : ""})
+				</Typography>
+				<Button variant="contained" color="primary" onClick={openNewSensorForm}>
+					+ Nuevo Sensor
+				</Button>
+			</Box>
 			<Table>
 				<TableHead>
 					<TableRow sx={{ backgroundColor: "#f5f5f5" }}>
@@ -162,11 +164,11 @@ export const SensorTable: React.FC<SensorTableProps> = ({ sensors }) => {
 											color: sensor.status
 												? statusColors.activo.text
 												: statusColors.inactivo.text,
-											fontWeight: "bold",
+
 											textAlign: "center",
 										}}
 									>
-										{sensor.status ? "Activo" : "Inactivo"}
+										{sensor.status ? "activo" : "inactivo"}
 									</Box>
 								</TableCell>
 								<TableCell>
