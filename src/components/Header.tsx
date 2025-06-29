@@ -1,12 +1,14 @@
 import React from "react";
+import { useAuth } from "../hook/useAuth";
 import { Box, Typography, Button } from "@mui/material";
 import LogoutIcon from "@mui/icons-material/Logout";
 import PersonIcon from "@mui/icons-material/Person";
 
 export const Header: React.FC = () => {
+	const { userEmail, logout } = useAuth();
 	return (
 		<Box
-            component="header"
+			component="header"
 			sx={{
 				bgcolor: "background.paper",
 				boxShadow: 1,
@@ -40,9 +42,14 @@ export const Header: React.FC = () => {
 						fontSize="0.875rem"
 					>
 						<PersonIcon fontSize="small" />
-						<Typography>Usuario</Typography>
+						<Typography>{userEmail}</Typography>
 					</Box>
-					<Button variant="outlined" size="small" startIcon={<LogoutIcon />}>
+					<Button
+						variant="outlined"
+						size="small"
+						onClick={logout}
+						startIcon={<LogoutIcon />}
+					>
 						Cerrar Sesión
 					</Button>
 				</Box>
