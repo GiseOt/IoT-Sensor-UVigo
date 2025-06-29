@@ -9,7 +9,7 @@ import {
 	Paper,
 } from "@mui/material";
 import type { Sensor } from "../types/Sensor";
-import type { SensorFilterProps } from "../types/sensorFilterPops";
+import type { SensorFilterProps } from "../types/sensorFilterProps";
 
 const SENSOR_TYPES: Sensor["type"][] = [
 	"Temperatura",
