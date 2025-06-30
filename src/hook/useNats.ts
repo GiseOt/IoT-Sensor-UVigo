@@ -1,4 +1,3 @@
-// src/hooks/useNats.ts
 import { useEffect, useState } from "react";
 import { connect, StringCodec } from "nats.ws";
 import type { NatsConnection } from "nats.ws";
@@ -80,7 +79,7 @@ export const useNats = (subject: string) => {
 
 		connectToNatsOrSimulate();
 
-		// Limpieza
+		//* Limpieza: cerramos la conexión y detenemos la simulación al desmontar o cambiar subject
 		return () => {
 			componentMounted = false;
 
