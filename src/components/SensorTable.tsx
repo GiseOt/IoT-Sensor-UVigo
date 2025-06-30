@@ -179,12 +179,14 @@ export const SensorTable: React.FC<SensorTableProps> = ({ sensors }) => {
 								<TableCell>
 									<Box display="flex" gap={1}>
 										<IconButton
+											aria-label="Editar"
 											color="primary"
 											onClick={() => handleEdit(sensor.id)}
 										>
 											<EditOutlinedIcon />
 										</IconButton>
 										<IconButton
+											aria-label="Eliminar"
 											color="error"
 											onClick={() => deleteSensor(sensor.id)}
 										>

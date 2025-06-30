@@ -27,7 +27,7 @@ export const LoginForm: React.FC = () => {
 
 	return (
 		<Dialog open fullWidth maxWidth="xs">
-			<DialogTitle>Iniciar Sesión</DialogTitle>
+			<DialogTitle>Inicio de Sesión</DialogTitle>
 			<DialogContent>
 				<form onSubmit={handleSubmit(onSubmit)} noValidate>
 					<TextField

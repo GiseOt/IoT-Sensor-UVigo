@@ -31,7 +31,11 @@ const SENSOR_TYPES: Sensor["type"][] = [
 	"Luz",
 ];
 
-export const SensorForm: React.FC<SensorFormProps> = ({ isOpen, onClose, sensor }) => {
+export const SensorForm: React.FC<SensorFormProps> = ({
+	isOpen,
+	onClose,
+	sensor,
+}) => {
 	const { addSensor, updateSensor } = useSensors();
 
 	const {
@@ -75,7 +79,7 @@ export const SensorForm: React.FC<SensorFormProps> = ({ isOpen, onClose, sensor 
 		};
 
 		if (sensor) {
-			updateSensor( payload);
+			updateSensor(payload);
 		} else {
 			addSensor(payload);
 		}
@@ -129,8 +133,11 @@ export const SensorForm: React.FC<SensorFormProps> = ({ isOpen, onClose, sensor 
 						name="value"
 						control={control}
 						rules={{
-							required: "El valor es requerido",
-							validate: (v) => !isNaN(v) || "Debe ser un número válido",
+							required: "El valor tiene que ser un número",
+							validate: (v) => {
+								const number = Number(v);
+								return !isNaN(number) && number >= 0;
+							},
 						}}
 						render={({ field }) => (
 							<TextField
@@ -172,5 +179,3 @@ export const SensorForm: React.FC<SensorFormProps> = ({ isOpen, onClose, sensor 
 		</Dialog>
 	);
 };
-
-
