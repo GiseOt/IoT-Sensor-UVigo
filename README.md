@@ -69,6 +69,49 @@ No hay problema. Si el servidor no está disponible, la app entra automáticamen
 
 - Para ejecutar los tests, se usa el comando: npm run test
 
+
+## Diagrama de la organización
+
++-------------------+
+|   index.html      |
+   |
+main.tsx
+   |
+App.tsx
+   |
++-----------------------------+
+|        Providers            |
+|  AuthProvider + SensorProvider
++-----------------------------+
+   |
+AppContent
+   |
+¿isAuthenticated?
+   |         \
+No           Sí
+ |            |
+LoginForm   Header
+               |
+           Dashboard
+               |
+   +-----------------------------+
+   |                             |
+SensorFilter                SensorTable
+   |                             |
+   |                        +----+----+
+   |                        |         |
+   |                  SensorForm  ConfirmDialog
+   |
+useSensors (hook) <-------------------+
+   |
+SensorContext (contexto global)
+   |
+useNats (hook para NATS/simulación)
+   |
+startSensorSimulation (si falla NATS)
+   |
+types/Sensor.ts (tipos TypeScript)
+
 ## Autora
 Gisella Analía Ortiz de la Tabla-
 
