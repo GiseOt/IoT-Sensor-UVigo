@@ -19,6 +19,7 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { statusColors, getSensorValueColor } from "../theme/colors";
+import Swal from "sweetalert2";
 
 type SensorTableProps = {
 	sensors: Sensor[];
@@ -44,6 +45,8 @@ export const SensorTable: React.FC<SensorTableProps> = ({ sensors }) => {
 		setSelectedSensor(null);
 	};
 
+	//* Manejo de eventos para editar y eliminar sensores
+
 	const handleEdit = (sensorId: string) => {
 		const sensorToEdit = sensors.find((s) => s.id === sensorId);
 		if (sensorToEdit) {
@@ -54,6 +57,30 @@ export const SensorTable: React.FC<SensorTableProps> = ({ sensors }) => {
 		}
 	};
 
+	const handleDelete = async (sensorId: string) => {
+		const result = await Swal.fire({
+			text: "¿Seguro que quieres eliminar el sensor?",
+			showCancelButton: true,
+			confirmButtonColor: "#1976d2",
+			cancelButtonColor: "#90caf9",
+			confirmButtonText: "ELIMINAR",
+			cancelButtonText: "CANCELAR",
+			customClass: {
+				popup: "swal2-material-ui",
+			},
+		});
+
+		if (result.isConfirmed) {
+			await deleteSensor(sensorId);
+			Swal.fire({
+				text: "El sensor ha sido eliminado.",
+				icon: "success",
+				confirmButtonColor: "#1976d2",
+			});
+		}
+	};
+
+	//* Ordenamiento de sensores por ID  entre ascendente y descendente
 	const toggleSortOrder = () => {
 		setSortOrder((prev) => (prev === "asc" ? "desc" : "asc"));
 	};
@@ -188,7 +215,7 @@ export const SensorTable: React.FC<SensorTableProps> = ({ sensors }) => {
 										<IconButton
 											aria-label="Eliminar"
 											color="error"
-											onClick={() => deleteSensor(sensor.id)}
+											onClick={() => handleDelete(sensor.id)}
 										>
 											<DeleteOutlineOutlinedIcon />
 										</IconButton>

@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import { createContext, useState } from "react";
 import type { ReactNode } from "react";
 import { getLocalStorage, setLocalStorage } from "../utils/localStorage";
 import type { AuthContextType } from "../types/authContextTypes";
