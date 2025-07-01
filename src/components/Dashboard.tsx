@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { SensorFilter } from "./SensorFilters";
 import { SensorTable } from "./SensorTable";
 import { useSensors } from "../hook/useSensor";

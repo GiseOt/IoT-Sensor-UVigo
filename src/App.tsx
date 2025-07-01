@@ -1,4 +1,3 @@
-import React from "react";
 import { SensorProvider } from "./contexts/SensorContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import { useAuth } from "./hook/useAuth";

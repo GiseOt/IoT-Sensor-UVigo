@@ -1,4 +1,3 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
 import { SensorForm } from "../SensorForm";
 import type { Sensor } from "../../types/Sensor";
